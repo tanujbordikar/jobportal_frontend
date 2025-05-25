@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API = axios.create({ baseURL: 'http://localhost:2025' });
+const API = axios.create({ baseURL: import.meta.env.VITE_SERVER_URL });
 API.interceptors.request.use((req) => {
    if(localStorage.getItem('userData')) {
       req.headers.authorization = `Bearer ${JSON.parse(localStorage.getItem('userData')).token}`;
